@@ -403,7 +403,7 @@ rm images/*_original.jpg
 ## 📁 项目结构
 
 ```
-MyChristmas/
+my-christmas/
 ├── christmas.html              # 主应用（单文件，108KB，2500+ 行代码）
 ├── config.json                 # 全局配置文件（1.5KB）
 ├── hand_landmarker.task        # MediaPipe 手势识别模型（7.5MB）
@@ -477,7 +477,7 @@ serve -p 8000
 git init
 git add .
 git commit -m "Initial commit"
-git remote add origin https://github.com/用户名/christmas-tree.git
+git remote add origin https://github.com/用户名/my-christmas.git
 git push -u origin main
 
 # 2. 启用 GitHub Pages

@@ -123,6 +123,13 @@
             gap: 10px;
         }
 
+        /* 帮助按钮组特殊样式 */
+        .btn-group.help-group {
+            justify-content: flex-end;
+            margin-top: 10px;
+            width: 100%;
+        }
+
         .upload-btn {
             background: rgba(20, 20, 20, 0.6);
             border: 1px solid rgba(212, 175, 55, 0.4);
@@ -553,6 +560,358 @@
             opacity: 0;
             pointer-events: none;
         }
+
+        /* ==================== 新手引导样式 ==================== */
+
+        /* 帮助按钮（整合到控制面板） */
+        /* 帮助按钮 (圆形玻璃拟态) */
+        .help-btn {
+            background: rgba(20, 20, 20, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            color: #d4af37;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            pointer-events: auto;
+        }
+
+        .help-btn:hover {
+            background: rgba(212, 175, 55, 0.15);
+            border-color: #d4af37;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4), inset 0 0 10px rgba(212, 175, 55, 0.2);
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        /* 引导覆盖层 */
+        #tutorial-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(5, 13, 26, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* 引导容器 */
+        .tutorial-container {
+            position: relative;
+            width: 600px;
+            max-width: 90%;
+            max-height: 85vh;
+            background: rgba(20, 20, 25, 0.95);
+            border: 2px solid rgba(212, 175, 55, 0.6);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+            overflow: hidden;
+        }
+
+        /* 关闭按钮 */
+        .tutorial-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.2s ease;
+            z-index: 10;
+        }
+
+        .tutorial-close:hover {
+            background: rgba(212, 175, 55, 0.3);
+            transform: rotate(90deg);
+        }
+
+        /* 页面指示器 */
+        .tutorial-indicator {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: #d4af37;
+            width: 30px;
+            border-radius: 5px;
+        }
+
+        /* 页面内容 */
+        .tutorial-page {
+            display: none;
+            animation: slideIn 0.4s ease;
+        }
+
+        .tutorial-page.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* 页面头部 */
+        .page-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .main-icon {
+            font-size: 50px;
+            margin-bottom: 10px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .page-header h2 {
+            color: #d4af37;
+            font-size: 24px;
+            margin: 0;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+
+        /* 页面主体 */
+        .page-body {
+            color: #fff;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            max-height: 50vh;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .page-body::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .page-body::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+        }
+
+        .page-body::-webkit-scrollbar-thumb {
+            background: rgba(212, 175, 55, 0.5);
+            border-radius: 3px;
+        }
+
+        /* 第一页样式 */
+        .intro-text {
+            text-align: center;
+            color: #ccc;
+            font-size: 16px;
+            margin: 15px 0 20px 0;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: left;
+        }
+
+        .feature-list li {
+            padding: 8px 0;
+            font-size: 15px;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* 第二页样式 */
+        .interaction-section {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            border-left: 3px solid #d4af37;
+        }
+
+        .section-title {
+            color: #d4af37;
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+
+        .section-content {
+            color: #ccc;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .gesture-icon {
+            display: inline-block;
+            width: 20px;
+            text-align: center;
+            margin-right: 5px;
+        }
+
+        /* 第三页样式 */
+        .feature-card {
+            margin-bottom: 15px;
+            padding: 12px;
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+        }
+
+        .card-title {
+            color: #d4af37;
+            font-weight: bold;
+            margin-bottom: 6px;
+            font-size: 15px;
+        }
+
+        .card-content {
+            color: #ccc;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* 页面底部按钮 */
+        .page-footer {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .btn-primary, .btn-secondary {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #d4af37, #f4d03f);
+            color: #050d1a;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .tutorial-container {
+                padding: 30px 20px;
+                width: 95%;
+            }
+
+            .page-header h2 {
+                font-size: 20px;
+            }
+
+            .main-icon {
+                font-size: 40px;
+            }
+
+            .page-body {
+                font-size: 14px;
+            }
+
+            .section-content, .card-content {
+                font-size: 12px;
+            }
+
+            .page-footer {
+                flex-direction: column;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+            }
+
+            .help-icon {
+                top: 15px;
+                right: 15px;
+            }
+        }
+
+        /* UI 层顶部容器（用于放置其他按钮） */
+        .ui-overlay-top {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            z-index: 90;
+            pointer-events: none;
+        }
     </style>
     
     <style>
@@ -615,6 +974,12 @@
                     Record
                 </button>
             </div>
+            <!-- 帮助按钮 -->
+            <div class="btn-group help-group">
+                <button class="help-btn" id="help-btn" title="使用帮助 (?)">
+                    ?
+                </button>
+            </div>
         </div>
     </div>
 
@@ -660,6 +1025,124 @@
             <div class="prompt-text">点击开始播放圣诞音乐</div>
             <button class="prompt-btn" id="start-music-btn">开始播放</button>
         </div>
+    </div>
+
+    <!-- 新手引导界面 -->
+    <div id="tutorial-overlay" style="display:none;">
+        <div class="tutorial-container">
+            <!-- 关闭按钮 -->
+            <div class="tutorial-close" id="tutorial-close">✕</div>
+
+            <!-- 页面指示器 -->
+            <div class="tutorial-indicator">
+                <span class="dot active" data-page="1"></span>
+                <span class="dot" data-page="2"></span>
+                <span class="dot" data-page="3"></span>
+            </div>
+
+            <!-- 内容区域 -->
+            <div class="tutorial-content">
+                <!-- 第一页：欢迎 -->
+                <div class="tutorial-page active" data-page="1">
+                    <div class="page-header">
+                        <div class="main-icon">🎄</div>
+                        <h2>欢迎使用圣诞树相册</h2>
+                    </div>
+                    <div class="page-body">
+                        <p class="intro-text">
+                            一个基于 3D 粒子系统和手势识别的<br>
+                            互动照片展示平台
+                        </p>
+                        <ul class="feature-list">
+                            <li>✨ 3D 圣诞树粒子效果</li>
+                            <li>✋ 手势控制照片排列</li>
+                            <li>📸 智能照片管理</li>
+                            <li>🎵 背景音乐播放</li>
+                        </ul>
+                    </div>
+                    <div class="page-footer">
+                        <button class="btn-secondary" id="tutorial-skip">不再提示</button>
+                        <button class="btn-primary" id="tutorial-next-1">开始了解 →</button>
+                    </div>
+                </div>
+
+                <!-- 第二页：交互方式 -->
+                <div class="tutorial-page" data-page="2">
+                    <div class="page-header">
+                        <div class="main-icon">🎮</div>
+                        <h2>三种交互方式</h2>
+                    </div>
+                    <div class="page-body">
+                        <div class="interaction-section">
+                            <div class="section-title">📱 手势控制（推荐）</div>
+                            <div class="section-content">
+                                <span class="gesture-icon">✊</span> 握拳 → 照片聚合成圣诞树<br>
+                                <span class="gesture-icon">✋</span> 张开手 → 散开成球形<br>
+                                <span class="gesture-icon">🤏</span> 捏合 → 聚焦单张照片
+                            </div>
+                        </div>
+                        <div class="interaction-section">
+                            <div class="section-title">🖱️ 鼠标/触摸</div>
+                            <div class="section-content">
+                                左键拖拽旋转 · 右键拖拽平移<br>
+                                滚轮缩放 · 双击聚焦
+                            </div>
+                        </div>
+                        <div class="interaction-section">
+                            <div class="section-title">⌨️ 键盘快捷键</div>
+                            <div class="section-content">
+                                H-隐藏UI · P-截图 · V-录制<br>
+                                M-音乐 · 1/2/3-切换模式
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-footer">
+                        <button class="btn-secondary" id="tutorial-prev-2">上一步</button>
+                        <button class="btn-primary" id="tutorial-next-2">下一步 →</button>
+                    </div>
+                </div>
+
+                <!-- 第三页：实用功能 -->
+                <div class="tutorial-page" data-page="3">
+                    <div class="page-header">
+                        <div class="main-icon">⚡</div>
+                        <h2>特色功能</h2>
+                    </div>
+                    <div class="page-body">
+                        <div class="feature-card">
+                            <div class="card-title">📷 智能照片管理</div>
+                            <div class="card-content">
+                                支持拖拽上传 | 自动压缩到 2048px<br>
+                                识别 6 种格式 | 批量并发加载
+                            </div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="card-title">🎬 录制与截图</div>
+                            <div class="card-content">
+                                P 键高清截图 | V 键视频录制<br>
+                                支持 2K 超清画质
+                            </div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="card-title">⚡ 性能优化</div>
+                            <div class="card-content">
+                                页面失焦自动休眠 | 低端设备降级<br>
+                                DrawCall 降低 99.8%
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-footer">
+                        <button class="btn-secondary" id="tutorial-prev-3">上一步</button>
+                        <button class="btn-primary" id="tutorial-complete">完成，开始使用</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 按钮定位层（保持在 UI 层上方） -->
+    <div class="ui-overlay-top">
+        <!-- 这里可以放置其他顶部按钮 -->
     </div>
 
     <script type="module">
@@ -1188,7 +1671,7 @@
                 filePattern: '(${i})',
                 folder: './images/',
                 maxImages: 500,
-                maxConsecutiveFails: 10,
+                maxConsecutiveFails: 5,
                 supportedExtensions: ['.jpg', '.jpeg', '.png', '.webp', '.gif', '.bmp']
             },
             audio: {
@@ -3212,6 +3695,283 @@
 
             composer.render();
         }
+
+        // ==================== 20. 新手引导系统 ====================
+
+        const tutorial = {
+            // 配置
+            config: {
+                storageKey: 'christmas-tutorial-v3',
+                version: '3.0'
+            },
+
+            // DOM 元素
+            elements: {
+                overlay: null,
+                helpBtn: null,
+                closeBtn: null,
+                pages: null,
+                dots: null,
+                buttons: {}
+            },
+
+            // 当前页面
+            currentPage: 1,
+            totalPages: 3,
+
+            // 初始化
+            init() {
+                this.cacheElements();
+                this.bindEvents();
+
+                // 首次访问检查
+                if (this.shouldShowOnFirstVisit()) {
+                    setTimeout(() => this.show(), 1000); // 延迟1秒显示
+                }
+            },
+
+            // 缓存 DOM 元素
+            cacheElements() {
+                this.elements.overlay = document.getElementById('tutorial-overlay');
+                this.elements.helpBtn = document.getElementById('help-btn');
+                this.elements.closeBtn = document.getElementById('tutorial-close');
+                this.elements.pages = document.querySelectorAll('.tutorial-page');
+                this.elements.dots = document.querySelectorAll('.dot');
+
+                // 按钮
+                this.elements.buttons = {
+                    next1: document.getElementById('tutorial-next-1'),
+                    prev2: document.getElementById('tutorial-prev-2'),
+                    next2: document.getElementById('tutorial-next-2'),
+                    prev3: document.getElementById('tutorial-prev-3'),
+                    complete: document.getElementById('tutorial-complete'),
+                    skip: document.getElementById('tutorial-skip')
+                };
+            },
+
+            // 绑定事件
+            bindEvents() {
+                // 帮助按钮
+                this.elements.helpBtn?.addEventListener('click', () => this.show());
+
+                // 关闭按钮
+                this.elements.closeBtn?.addEventListener('click', () => this.hide());
+
+                // 第一页按钮
+                this.elements.buttons.next1?.addEventListener('click', () => this.nextPage());
+                this.elements.buttons.skip?.addEventListener('click', () => this.skipForever());
+
+                // 第二页按钮
+                this.elements.buttons.prev2?.addEventListener('click', () => this.prevPage());
+                this.elements.buttons.next2?.addEventListener('click', () => this.nextPage());
+
+                // 第三页按钮
+                this.elements.buttons.prev3?.addEventListener('click', () => this.prevPage());
+                this.elements.buttons.complete?.addEventListener('click', () => this.complete());
+
+                // 点击遮罩关闭
+                this.elements.overlay?.addEventListener('click', (e) => {
+                    if (e.target === this.elements.overlay) {
+                        this.hide();
+                    }
+                });
+
+                // ESC 键关闭
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && this.elements.overlay.style.display !== 'none') {
+                        this.hide();
+                    }
+                });
+            },
+
+            // 检查是否首次访问显示
+            shouldShowOnFirstVisit() {
+                const saved = localStorage.getItem(this.config.storageKey);
+
+                if (!saved) {
+                    return true; // 没有记录，首次访问
+                }
+
+                try {
+                    const data = JSON.parse(saved);
+
+                    // 版本不同，需要重新显示
+                    if (data.version !== this.config.version) {
+                        return true;
+                    }
+
+                    // 用户选择不再显示
+                    if (data.skipForever) {
+                        return false;
+                    }
+
+                    // 已完成，不再自动显示
+                    return false;
+                } catch (e) {
+                    // 数据损坏，重新显示
+                    return true;
+                }
+            },
+
+            // 显示引导
+            show() {
+                if (!this.elements.overlay) return;
+
+                // 重置到第一页
+                this.currentPage = 1;
+                this.updateUI();
+
+                // 显示
+                this.elements.overlay.style.display = 'flex';
+                document.body.style.overflow = 'hidden'; // 禁止滚动
+            },
+
+            // 隐藏引导
+            hide() {
+                if (!this.elements.overlay) return;
+
+                this.elements.overlay.style.display = 'none';
+                document.body.style.overflow = ''; // 恢复滚动
+
+                // 保存已访问状态
+                this.saveState({ completed: true });
+            },
+
+            // 下一页
+            nextPage() {
+                if (this.currentPage < this.totalPages) {
+                    this.currentPage++;
+                    this.updateUI();
+                }
+            },
+
+            // 上一页
+            prevPage() {
+                if (this.currentPage > 1) {
+                    this.currentPage--;
+                    this.updateUI();
+                }
+            },
+
+            // 更新 UI
+            updateUI() {
+                // 更新页面显示
+                this.elements.pages.forEach((page, index) => {
+                    if (index + 1 === this.currentPage) {
+                        page.classList.add('active');
+                    } else {
+                        page.classList.remove('active');
+                    }
+                });
+
+                // 更新指示器
+                this.elements.dots.forEach((dot, index) => {
+                    if (index + 1 === this.currentPage) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            },
+
+            // 完成引导
+            complete() {
+                this.saveState({
+                    completed: true,
+                    showAgain: false
+                });
+                this.hide();
+
+                // 显示成功提示
+                this.showToast('👋 欢迎来到圣诞树相册！', 'info');
+            },
+
+            // 永远跳过
+            skipForever() {
+                this.saveState({
+                    completed: true,
+                    skipForever: true
+                });
+                this.hide();
+
+                this.showToast('引导已跳过，随时点击右上角 ? 查看', 'info');
+            },
+
+            // 保存状态
+            saveState(state) {
+                const current = this.loadState();
+                const newState = {
+                    ...current,
+                    ...state,
+                    version: this.config.version,
+                    timestamp: Date.now()
+                };
+
+                localStorage.setItem(this.config.storageKey, JSON.stringify(newState));
+            },
+
+            // 读取状态
+            loadState() {
+                try {
+                    const saved = localStorage.getItem(this.config.storageKey);
+                    return saved ? JSON.parse(saved) : {};
+                } catch (e) {
+                    return {};
+                }
+            },
+
+            // 显示 Toast（复用现有的 toast 系统）
+            showToast(message, type = 'info') {
+                // 查找现有的 toast 函数或创建简化版
+                if (window.showToast) {
+                    window.showToast(message, type);
+                } else {
+                    // 简单提示
+                    console.log(`[${type.toUpperCase()}] ${message}`);
+                }
+            },
+
+            // 重置引导（用于调试）
+            reset() {
+                localStorage.removeItem(this.config.storageKey);
+                alert('引导已重置，刷新后将重新显示');
+            }
+        };
+
+        // 启动引导系统
+        tutorial.init();
+
+        // 暴露到全局（用于调试）
+        window.tutorial = tutorial;
+
+        // 调试辅助：控制台命令
+        window.showDebugInfo = () => {
+            const saved = localStorage.getItem(tutorial.config.storageKey);
+            console.log('=== 新手引导调试信息 ===');
+            console.log('Storage Key:', tutorial.config.storageKey);
+            console.log('Version:', tutorial.config.version);
+            console.log('Raw Data:', saved);
+            if (saved) {
+                try {
+                    const data = JSON.parse(saved);
+                    console.log('Parsed Data:', data);
+                    console.log('应该显示引导吗？:', !data.completed || data.skipForever === false);
+                } catch (e) {
+                    console.log('数据解析失败，重新显示');
+                }
+            } else {
+                console.log('无记录（首次访问），应该显示');
+            }
+            return saved;
+        };
+
+        // 重置并刷新的快捷命令
+        window.resetAndReload = () => {
+            localStorage.removeItem(tutorial.config.storageKey);
+            console.log('已重置，3秒后刷新...');
+            setTimeout(() => location.reload(), 3000);
+            return '重置完成，即将刷新';
+        };
 
         // ==================== 20. 启动应用 ====================
         init();

@@ -2,9 +2,9 @@
 
 <div align="center">
 
-Claude Code 辅助创建的：一个基于 Three.js 和 MediaPipe 的交互式3D圣诞树照片展示系统，支持手势控制、鼠标键盘控制、图片自动加载和手动上传、音频播放、截屏和录屏。
+Claude Code 辅助创建的：一个基于 Three.js 和 MediaPipe 的交互式3D圣诞树照片展示系统，支持新手引导、手势控制、鼠标键盘控制、图片自动加载和手动上传、音频播放、截屏和录屏。
 
-![Version](https://img.shields.io/badge/version-3.0-brightgreen)
+![Version](https://img.shields.io/badge/version-3.1-brightgreen)
 ![Three.js](https://img.shields.io/badge/Three.js-v0.160.0-blue)
 ![MediaPipe](https://img.shields.io/badge/MediaPipe-v0.10.3-orange)
 ![License](https://img.shields.io/badge/license-MIT-blue)
@@ -21,24 +21,27 @@ Claude Code 辅助创建的：一个基于 Three.js 和 MediaPipe 的交互式3D
 - **3D 粒子圣诞树** - 1500 个金色装饰品粒子组成动态圣诞树
 - **雪花与尘埃系统** - 3000 个 GPU 加速粒子营造梦幻氛围
 - **HDR 辉光效果** - 专业后处理效果，金色粒子发光
-- **金色相框** - 每张照片都有金属质感的相框
+- **极简 UI 设计** - 玻璃拟态控制面板，圆形悬浮帮助按钮
 
-### 🖐️ 手势控制
-- **握拳** → 粒子聚合成圣诞树形态
-- **张开手** → 照片散开成球形分布
-- **捏合** → 聚焦放大单张照片
-- 5 帧移动平均滤波，500ms 冷却时间，识别更平滑
+### 🚀 交互增强
+- **交互式新手引导** - 首次访问自动开启，三步掌握核心操作
+- **手势控制系统**：
+  - **握拳** → 粒子聚合成圣诞树形态
+  - **张开手** → 照片散开成球形分布
+  - **捏合** → 聚焦放大单张照片
+- 5 帧移动平均滤波，识别更平滑
 
 ### 📸 智能图片系统
 - 自动检测 6 种图片格式（jpg/jpeg/png/webp/gif/bmp）
 - 智能批量加载（每批 10 张并发）
+- **自动错误静默处理**：智能跳过不存在的序号，保持控制台整洁
 - 超过 2048px 自动压缩
 - 支持拖拽上传文件夹/文件
 
 ### 🎵 音频与录制
-- 背景音乐播放控制
+- 背景音乐播放控制（支持音格调节与静音）
 - PNG 截图和 MP4 视频录制
-- 页面失焦时自动暂停
+- **性能休眠**：页面失焦时自动暂停渲染与多媒体，节省系统资源
 
 ### ⚡ 性能优化
 - **99.8% DrawCall 降低**（3500+ → 6，使用 InstancedMesh）
